@@ -20,8 +20,6 @@ template1 = PromptTemplate(
     }
 )
 
-prompt=template1.format()
-result=model.invoke(prompt)
-final_result=parser.parse(result.content)
-print(final_result)
-print(type(final_result))
+chain=template1 | model | parser
+result = chain.invoke({})
+print(result)
