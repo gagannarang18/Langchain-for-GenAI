@@ -17,3 +17,5 @@ parser=StrOutputParser()
 chain=prompt | model | parser
 result = chain.invoke({"country": "India"})
 print(result)
+
+chain.get_graph().print_ascii()
