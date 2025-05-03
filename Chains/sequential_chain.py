@@ -18,3 +18,10 @@ prompt2= PromptTemplate(
 )
 
 model= ChatGroq(model="llama-3.1-8b-instant")
+
+parser=StrOutputParser()
+
+chain=prompt1 | model | parser | prompt2 | model | parser
+result = chain.invoke({"topic": "Artificial Intelligence"})
+print(result)
+chain.get_graph().print_ascii()
