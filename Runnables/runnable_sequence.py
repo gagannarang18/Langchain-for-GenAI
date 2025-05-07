@@ -8,16 +8,24 @@ from pydantic import BaseModel, Field
 
 load_dotenv()
 
-prompt= PromptTemplate(
+prompt1= PromptTemplate(
     template="Write a joke on {topic}",
     input_variables=["topic"]
 )
+
+prompt2= PromptTemplate(
+    template="Explain the following {text}",
+    input_variables=["text"]
+)
+
 
 parser=StrOutputParser()
 
 model=ChatGroq(model="llama-3.1-8b-instant")
 
-chain=RunnableSequence(prompt,model,parser)
+chain=RunnableSequence(prompt1,model,parser,prompt2,model,parser)
+
 result = chain.invoke({"topic": "cats"})
+
 print(result)
 chain.get_graph().print_ascii()
