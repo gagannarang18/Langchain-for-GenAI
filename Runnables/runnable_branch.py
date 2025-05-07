@@ -40,9 +40,9 @@ prompt3 = PromptTemplate(
 )
 
 branch_chain = RunnableBranch(
-    (lambda x:x.sentiment == 'Spam', prompt2 | model | parser2),
-    (lambda x:x.sentiment == 'Non-Spam', prompt3 | model | parser2),
-    RunnableLambda(lambda x: "could not find sentiment")
+    (lambda x:x.sentiment == 'Spam', RunnableSequence(prompt2,  model, parser2)),
+    (lambda x:x.sentiment == 'Non-Spam', RunnableSequence(prompt3, model, parser2)),
+    RunnableLambda(lambda x: "could classify the mail")
 )
 
 final_chain=RunnableSequence(
