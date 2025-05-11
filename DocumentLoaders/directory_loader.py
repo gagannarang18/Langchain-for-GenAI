@@ -12,3 +12,6 @@ print(len(docs)) # Number of documents loaded(total no. of pages)
 
 #in books directory, you can add your pdfs and try riunning this  code.
 # print(docs[0].page_content) # Content of the first document
+
+
+#Note : you can use lazy_load parameter to load the documents lazily.
