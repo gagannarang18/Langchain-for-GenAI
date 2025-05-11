@@ -10,7 +10,7 @@ model=ChatGroq(model="llama-3.1-8b-instant")
 parser=StrOutputParser()
 
 prompt= PromptTemplate(
-    "Write a summary of the following poem: {poem}",
+    template="Write a summary of the following poem: {poem}",
     input_variables=["poem"]
 )
 
