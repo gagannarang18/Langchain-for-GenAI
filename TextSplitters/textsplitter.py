@@ -14,3 +14,5 @@ splitter= CharacterTextSplitter(
 result=splitter.split_documents(docs)
 
 print(result[0])
+
+##chunk overlap helps to avoid losing context between chunks
